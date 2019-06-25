@@ -1,26 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 import './App.css';
+import 'react-notifications/lib/notifications.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  createNotification(type) {
+    return () => {
+      switch (type) {
+        case 'info':
+          NotificationManager.info('Info message');
+          break;
+        case 'success':
+          NotificationManager.success('Success message', 'Title here');
+          break;
+        case 'warning':
+          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+          break;
+        case 'error':
+          NotificationManager.error('Error message', 'Click me!', 5000, () => {
+            alert('callback');
+          });
+          break;
+        default:
+      }
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <button className='btn btn-info'
+            onClick={this.createNotification('info')}>Info
+          </button>
+          <hr />
+          <button className='btn btn-success'
+            onClick={this.createNotification('success')}>Success
+          </button>
+          <hr />
+          <button className='btn btn-warning'
+            onClick={this.createNotification('warning')}>Warning
+          </button>
+          <hr />
+          <button className='btn btn-danger'
+            onClick={this.createNotification('error')}>Error
+          </button>
+
+          <NotificationContainer />
+        </div>
+      </div>
+    );
+  }
 }
-
-export default App;
