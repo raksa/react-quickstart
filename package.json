@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-notifications": "^1.4.3",
+    "react-notifications-component": "^1.1.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
