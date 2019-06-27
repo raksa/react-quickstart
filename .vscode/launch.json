@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome: OukOnline v2",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/app"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Start",
+            "program": "${workspaceRoot}/scripts/start.js",
+            "cwd": "${workspaceRoot}/",
+            "env": {
+                "NODE_ENV": "development"
+                // , "DEBUG": "*"
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "jest",
+            "program": "${workspaceRoot}/node_modules/.bin/jest",
+            "cwd": "${workspaceRoot}/",
+            "env": {
+                "NODE_ENV": "test",
+            },
+            "args": [
+                "${file}",
+            ],
+        }
+    ]
+}
